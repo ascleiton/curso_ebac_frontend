@@ -1,35 +1,19 @@
-const form = document.getElementById('form-bmaior');
-
-
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-
-    validaCampoNumerico();
-
-})
-
-function validaCampoNumerico(){
-    let n1 = parseInt(document.getElementById('n1').value);
-    let n2 = parseInt(document.getElementById('n2').value);
-    const msgSuccess = 'Parabéns! Você cumpriu os requisitos propostos.'
-    const msgError = 'Tente novamente! o campo B precisa ser maior.'
-    let maior = n1;
+$(document).ready(function(){
     
-    if(n2>maior){
-        const containersuccess = document.querySelector('.positivo')
-        containersuccess.innerHTML = msgSuccess
-        containersuccess.style.display = 'block';
-        containersuccess.style.backgroundColor = 'green';
-    }else{
-        const containererror = document.querySelector('.negativo')
-        containererror.innerHTML = msgError
-        containererror.style.display = 'block';
-        containererror.style.backgroundColor = 'red';
-    }   
-}
-
-form.addEventListener('submit', function(e){
-    e.preventDefault();
-
-    validaCampoNumerico();
-})
+    let contador = []
+    
+        $('form').on('submit', function(e){
+            e.preventDefault()
+    
+            const adicionarTarefa = $('input').val()
+            const novoItem = $('<li></li>')
+            $(`<p>${adicionarTarefa}</p>`).appendTo(novoItem)
+            $(novoItem).appendTo('ul')
+    
+    
+        $('li').on('click', function(){
+            $(this).addClass('concluido')
+        })
+        $('input').val('')
+    })
+    })
